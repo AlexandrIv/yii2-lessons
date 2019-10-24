@@ -8,7 +8,7 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use yii\models\Posts;
+use frontend\models\Posts;
 
 /**
  * Site controller
@@ -82,11 +82,10 @@ class PostsController extends Controller
 
     public function actionPost()
     {
-        $post = Posts::find()->where(['id' => Yii::$app->request()->get()['id']])->one();
+        $post = Posts::find()->where(['id' => Yii::$app->request->get()['id']])->one();
         return $this->render('post', [
             'post' => $post
         ]);
     }
-    
 
 }
